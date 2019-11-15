@@ -76,14 +76,14 @@ span.desc {
     font-size: 20px;
 }
 .add-log {
-    cursor: pointer;
     float: left;
     width: 280px;
     height: 150px;
     margin: 45px;
 }
 .icon-style {
-    margin: 50px 100px;
+    cursor: pointer;
+    line-height: 150px;
     font-size: 100px
 }
 .input-style {
