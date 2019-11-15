@@ -1,24 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Home from '../views/Home.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-    {
-    // path: '/',
-    // name: 'home',
-    // component: Home
-    },
-    {
-    // path: '/about',
-    // name: 'about',
-    // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    }
-]
-
-const router = new VueRouter({
-    routes
+export default new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'Home',
+            component: Home,
+            redirect: '/index',
+            children: [
+                {
+                    path: '/index',
+                    name: 'Index',
+                    component: () => import(/* webpackChunkName: "about" */ '../views/HomePage/index.vue')
+                },
+                {
+                    path: '/log',
+                    name: 'Log',
+                    component: () => import(/* webpackChunkName: "about" */ '../views/LogPage/index.vue')
+                },
+                {
+                    path: '/library',
+                    name: 'Library',
+                    component: () => import(/* webpackChunkName: "about" */ '../views/LibraryPage/index.vue')
+                },
+                {
+                    path: '/admin',
+                    name: 'Admin',
+                    component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/index.vue')
+                }
+            ]
+        },
+        {
+            path: '/404',
+            name: 'NoPage',
+            component: () => import(/* webpackChunkName: "about" */ '../views/404.vue')
+        },
+        { path: '*', redirect: '/404' }
+    ]
 })
-
-export default router
