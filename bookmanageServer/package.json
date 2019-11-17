@@ -1,0 +1,17 @@
+{
+  "name": "bookmanageserver",
+  "version": "1.0.0",
+  "description": "图书管理服务端",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "author": "GongTao",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.7.11"
+  }
+}
