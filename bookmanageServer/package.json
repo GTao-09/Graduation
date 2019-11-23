@@ -1,17 +1,21 @@
 {
-  "name": "bookmanageserver",
-  "version": "1.0.0",
-  "description": "图书管理服务端",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js"
-  },
-  "author": "GongTao",
-  "license": "ISC",
-  "dependencies": {
-    "koa": "^2.11.0",
-    "koa-router": "^7.4.0",
-    "mongoose": "^5.7.11"
-  }
+    "name": "bookmanageserver",
+    "version": "1.0.0",
+    "description": "图书管理服务端",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "server": "nodemon app.js"
+    },
+    "author": "GongTao",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^3.0.6",
+        "bluebird": "^3.7.1",
+        "jsonwebtoken": "^8.5.1",
+        "koa": "^2.11.0",
+        "koa-bodyparser": "^4.2.1",
+        "koa-router": "^7.4.0",
+        "mongoose": "^5.7.11"
+    }
 }

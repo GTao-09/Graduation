@@ -40,6 +40,11 @@ export default new VueRouter({
             name: 'NoPage',
             component: () => import(/* webpackChunkName: "about" */ '../views/404.vue')
         },
+        {
+            path: '/login',
+            name: 'Login',
+            component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+        },
         { path: '*', redirect: '/404' }
     ]
 })

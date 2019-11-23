@@ -12,7 +12,7 @@
             <el-menu-item v-for="(item,index) in navList" :key="index" :index="item.name">
                 {{ item.navItem }}
             </el-menu-item>
-            <span class="main-title-style">XXX图书管理系统</span>
+            <span class="main-title-style">书屋图书管理系统</span>
             <i class="el-icon-switch-button logout-style" @click="logout"></i>
         </el-menu>
     </div>

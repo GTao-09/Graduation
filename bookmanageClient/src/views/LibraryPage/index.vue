@@ -24,6 +24,7 @@
             <el-container style="width: 80%; margin: 0 auto;">
                 <el-main>
                     <!-- 图书图片展示组件 -->
+                    <BooksView></BooksView>
                 </el-main>
             </el-container>
         </el-container>
@@ -32,10 +33,12 @@
 
 <script>
 import SideMenu from './SideMenu'
+import BooksView from './BooksView'
 export default {
     name: 'Library', // 图书馆
     components: {
-        SideMenu
+        SideMenu,
+        BooksView
     },
     data () {
         return {
