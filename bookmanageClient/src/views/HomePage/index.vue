@@ -57,6 +57,10 @@ export default {
         SideMenu,
         DownCode,
         About
+    },
+    mounted () {
+        console.log(this.$store.state)
+        // this.$store.commit('TOKEN', '')
     }
 }
 </script>

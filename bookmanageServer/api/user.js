@@ -107,7 +107,8 @@ router.post('/login', async ctx => {
                     ctx.body = {
                         success: true,
                         sysErrDesc: '', // 错误信息
-                        data: 'Bearer ' + token // 数据
+                        data: token // 前端拼装了Bearer
+                        // data: 'Bearer ' + token // 数据
                     }
                 );
             }

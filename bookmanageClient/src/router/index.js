@@ -31,7 +31,20 @@ export default new VueRouter({
                 {
                     path: '/admin',
                     name: 'Admin',
-                    component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/index.vue')
+                    redirect: '/userconfig',
+                    component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/index.vue'),
+                    children: [
+                        {
+                            path: '/userconfig',
+                            name: 'UserConfig',
+                            component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/UserConfig.vue')
+                        },
+                        {
+                            path: '/registered',
+                            name: 'Registered',
+                            component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/Registered.vue')
+                        }
+                    ]
                 }
             ]
         },

@@ -1,7 +1,8 @@
 const koa = require("koa");
 const Router = require("koa-router");
 const mongoose = require("mongoose");
-const bodyParser = require("koa-bodyparser")
+const bodyParser = require("koa-bodyparser");
+const cors = require('koa2-cors'); // 解决跨域问题
 
 const userSchema = require("./mongoSchema/userSchema");
 
@@ -32,6 +33,20 @@ mongoose.connect(db, { useNewUrlParser: true })
     })
     .catch(error => console.log(error))
 
+//设置跨域访问
+app.use(cors({
+    origin: function (ctx) {
+        if (ctx.url === '/test') {
+            return "*"; // 允许来自所有域名请求
+        }
+        return 'http://192.168.0.110:8080'; // 这样就能只允许 http://192.168.0.110:8080 这个域名的请求了
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 app.use(check);
 app.use(routes.routes(), routes.allowedMethods())
 
