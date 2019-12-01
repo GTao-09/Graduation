@@ -1,7 +1,9 @@
 <template>
     <div class="home">
-        <HeaderNav v-if="flag"></HeaderNav>
-        <router-view v-if="flag" />
+        <!-- v-if="flag" -->
+        <HeaderNav ></HeaderNav>
+        <!-- v-if="flag" -->
+        <router-view />
     </div>
 </template>
 
@@ -13,17 +15,17 @@ export default {
         HeaderNav
     },
     mounted () {
-        // JSON.stringify(graduationStore)
-        if (this.$store.state.token) {
-            this.flag = true
-        } else {
-            if (JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token) {
-                this.flag = true
-                this.$store.commit('TOKEN', JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token)
-            } else {
-                location.href = 'http://192.168.0.110:8080/login'
-            }
-        }
+        // 前端开发时先注释掉
+        // if (this.$store.state.token) {
+        //     this.flag = true
+        // } else {
+        //     if (JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token) {
+        //         this.flag = true
+        //         this.$store.commit('TOKEN', JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token)
+        //     } else {
+        //         location.href = 'http://192.168.0.110:8080/login'
+        //     }
+        // }
     },
     data () {
         return {
@@ -37,6 +39,6 @@ export default {
 
 .home {
     background-color: #F6F6F6;
-    min-width: 1200px;
+    // min-width: 1200px;
 }
 </style>

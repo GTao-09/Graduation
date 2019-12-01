@@ -1,6 +1,6 @@
 <template>
     <div class="user-config">
-        <el-table :data="tableData" height="250" border style="width: 100%">
+        <el-table :data="tableData" border style="width: 100%">
             <el-table-column prop="date" label="日期" align="center"></el-table-column>
             <el-table-column prop="name" label="姓名" align="center"></el-table-column>
             <el-table-column prop="address" label="地址" align="center"></el-table-column>

@@ -1,15 +1,15 @@
 <template>
     <div class="books-view">
-        <el-tooltip effect="dark" placement="right" v-for="item in bookArr" :key="item.id">
+        <el-tooltip effect="dark" placement="right" v-for="(item, index) in bookList" :key="index">
             <p slot="content" class="tooltip-title">
-                {{ item.title }}
+                {{ item.bookName }}
             </p>
             <p slot="content" class="tooltip-author">
-                <span>{{ item.author }}</span> /
-                <span>{{ item.date }}</span> /
-                <span>{{ item.press }}</span>
+                <span>{{ item.bookAuthor }}</span> /
+                <span>{{ item.yearOfPublication }}</span> /
+                <span>{{ item.bookPress }}</span>
             </p>
-            <p slot="content" class="abstract">{{ item.introduction }}</p>
+            <p slot="content" class="abstract">{{ item.remake }}</p>
             <el-card class="book" shadow="hover">
                 <div class="cover" @click="editBook(item)">
                     <img src="../../assets/books/s2768378.jpg" alt="封面">
@@ -17,11 +17,11 @@
                 </div>
                 <div class="info">
                     <div class="title">
-                        <div>{{ item.title }}</div>
+                        <div>{{ item.bookName }}</div>
                     </div>
-                    <i class="el-icon-delete" @click="deleteBook(item.id)"></i>
+                    <i class="el-icon-delete" @click="deleteBook(item.ISBN)"></i>
                 </div>
-                <div class="author">{{ item.author }}</div>
+                <div class="author">{{ item.bookAuthor }}</div>
             </el-card>
         </el-tooltip>
     </div>
@@ -30,24 +30,36 @@
 <script>
 export default {
     name: 'BooksView', // 图书展示 (视图形式)
+    props: {
+        bookArr: {
+            type: Array,
+            defalute: () => []
+        }
+    },
+    computed: {
+        bookList () {
+            return this.bookArr
+        }
+    },
     data () {
         return {
-            bookArr: [
-                {
-                    id: '123',
-                    // 浮窗
-                    title: 'titleTest',
-                    author: 'authorTest',
-                    date: '2019-11-18',
-                    press: '出版社',
-                    introduction: '介绍'
-                }
-            ]
+            // bookArr: [
+            //     {
+            //         ISBN: '123',
+            //         bookName: 'bookNameTest', // 书名
+            //         bookCategory: '1', // 类别
+            //         bookAuthor: 'bookAuthorTest', // 作者
+            //         bookPress: 'bookPressTest', // 出版社
+            //         yearOfPublication: '2019-12-01', // 出版年
+            //         bookPricing: '99999', // 定价
+            //         remake: 'test' // 简介
+            //     }
+            // ]
         }
     },
     methods: {
         editBook (val) {
-            console.log(val)
+            this.$emit('BookEdit', val)
         },
         deleteBook (val) {
             this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
