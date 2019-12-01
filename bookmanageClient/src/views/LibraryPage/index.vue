@@ -189,6 +189,7 @@ export default {
             this.$refs['addBookForm'].resetFields()
         },
         submitForm () {
+            console.log(this.addBookForm)
             this.$refs['addBookForm'].validate((valid) => {
                 if (valid) {
                     alert('submit!')

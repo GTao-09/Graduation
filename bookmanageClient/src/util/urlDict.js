@@ -1,6 +1,6 @@
 const urlDict = {
     login: { // 登录拿token
-        url: '/api/users/login',
+        url: '/users/login',
         needLogin: false
     }
 }

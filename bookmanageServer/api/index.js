@@ -4,7 +4,7 @@ const books = require("./book");
 
 const router = Router();
 
-router.use('/api/users', users.routes(), users.allowedMethods());
-router.use('/api/books', books.routes(), books.allowedMethods());
+router.use('/users', users.routes(), users.allowedMethods());
+router.use('/books', books.routes(), books.allowedMethods());
 
 module.exports = router;

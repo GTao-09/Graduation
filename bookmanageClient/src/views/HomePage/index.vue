@@ -21,6 +21,12 @@
                             <!-- 这个将会是一个动态展示，在个人信息中增加(管理员可加), 数据存储数据库以便长久展示 (?具体实现看情况) -->
                             <el-timeline-item timestamp="2019/12/01" placement="top">
                                 <el-card>
+                                    <h4>开始初步前后端联调，使前后端能连通，主要解决问题跨域</h4>
+                                    <p>Gong 提交于 2019/12/01 12:00</p>
+                                </el-card>
+                            </el-timeline-item>
+                            <el-timeline-item timestamp="2019/12/01" placement="top">
+                                <el-card>
                                     <h4>实现图书分类功能</h4>
                                     <p>Gong 提交于 2019/12/01 09:02</p>
                                 </el-card>

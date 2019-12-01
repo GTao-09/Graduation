@@ -12,8 +12,8 @@ const localDate = () => {
 
 const check = async (ctx, next) => {
     const url = ctx.request.url;
-    // 登录 不用检测  || url === '/api/users/register'
-    if (url === '/api/users/login') await next();
+    // 登录 不用检测  || url === '/users/register'
+    if (url === '/users/login') await next();
     else {
         // 规定token写在header的 'authorization'  前端返回的token
         const frontToken = ctx.request.headers['authorization'];
@@ -56,7 +56,7 @@ const check = async (ctx, next) => {
                 ctx.body = {
                     success: false,
                     sysErrDesc: '请重新登录', // 错误信息
-                    data: error // 数据
+                    sysError: error // 数据
                 }
             )
         }
