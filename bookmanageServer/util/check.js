@@ -12,7 +12,7 @@ const localDate = () => {
 
 const check = async (ctx, next) => {
     const url = ctx.request.url;
-    // 登录 不用检测  || url === '/users/register'
+    // 登录 不用检测 || url === '/users/register'
     if (url === '/users/login') await next();
     else {
         // 规定token写在header的 'authorization'  前端返回的token

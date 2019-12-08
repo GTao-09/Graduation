@@ -34,7 +34,7 @@ export default {
     methods: {
         logout () {
             this.$store.commit('TOKEN', '')
-            location.href = 'http://192.168.0.110:8080/'
+            location.href = 'http://192.168.0.102:8080/'
         },
         handleSelect (key, val) {
             console.log(key, val)

@@ -12,7 +12,8 @@
             <p slot="content" class="abstract">{{ item.remake }}</p>
             <el-card class="book" shadow="hover">
                 <div class="cover" @click="editBook(item)">
-                    <img src="../../assets/books/s2768378.jpg" alt="封面">
+                    <!-- <img src="../../assets/books/s2768378.jpg" alt="封面"> -->
+                    <img :src="item.cover" alt="封面">
                     <!-- <img :src="item.cover" alt="封面"> -->
                 </div>
                 <div class="info">
@@ -43,6 +44,7 @@ export default {
     },
     data () {
         return {
+            imgValue: require('../../assets/books/s2768378.jpg')
             // bookArr: [
             //     {
             //         ISBN: '123',
@@ -67,11 +69,7 @@ export default {
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                this.$message({
-                    type: 'success',
-                    message: '删除成功!',
-                    duration: 1000
-                })
+                this.$emit('BookDelete', val)
             }).catch(() => {
                 this.$message({
                     type: 'info',
@@ -79,7 +77,6 @@ export default {
                     duration: 1000
                 })
             })
-            console.log(val)
         }
     }
 }

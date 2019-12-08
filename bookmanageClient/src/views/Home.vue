@@ -1,9 +1,7 @@
 <template>
     <div class="home">
-        <!-- v-if="flag" -->
-        <HeaderNav ></HeaderNav>
-        <!-- v-if="flag" -->
-        <router-view />
+        <HeaderNav v-if="flag"></HeaderNav>
+        <router-view v-if="flag"/>
     </div>
 </template>
 
@@ -16,16 +14,16 @@ export default {
     },
     mounted () {
         // 前端开发时先注释掉
-        // if (this.$store.state.token) {
-        //     this.flag = true
-        // } else {
-        //     if (JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token) {
-        //         this.flag = true
-        //         this.$store.commit('TOKEN', JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token)
-        //     } else {
-        //         location.href = 'http://192.168.0.110:8080/login'
-        //     }
-        // }
+        if (this.$store.state.token) {
+            this.flag = true
+        } else {
+            if (JSON.parse(window.localStorage.getItem('__graduationStore__')) && JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token) {
+                this.flag = true
+                this.$store.commit('TOKEN', JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token)
+            } else {
+                location.href = 'http://192.168.0.102:8080/login'
+            }
+        }
     },
     data () {
         return {

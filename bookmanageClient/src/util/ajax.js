@@ -10,7 +10,7 @@ const env = 'dev'
 const protocol = env === 'production' ? 'http:' : 'http:'
 
 const api = {
-    dev: '//localhost:8060' // 服务端接口地址前缀
+    dev: '//127.0.0.1:5000' // 服务端接口地址前缀
     // dev: '//kt-test.st.9now.net',
     // test: '//kt-test.st.9now.net',
     // production: '//gateway-infc.mwee.cn'

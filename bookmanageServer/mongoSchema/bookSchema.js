@@ -39,6 +39,9 @@ const BookSchema = new Schema({
     remake: { // 简介
         type: String
     },
+    cover: { // 封面
+        type: String
+    },
     date: {
         type: Date,
         default: localDate()

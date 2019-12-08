@@ -19,24 +19,14 @@
                     <div class="block">
                         <el-timeline>
                             <!-- 这个将会是一个动态展示，在个人信息中增加(管理员可加), 数据存储数据库以便长久展示 (?具体实现看情况) -->
-                            <el-timeline-item timestamp="2019/12/01" placement="top">
-                                <el-card>
-                                    <h4>开始初步前后端联调，使前后端能连通，主要解决问题跨域</h4>
-                                    <p>Gong 提交于 2019/12/01 12:00</p>
-                                </el-card>
-                            </el-timeline-item>
-                            <el-timeline-item timestamp="2019/12/01" placement="top">
-                                <el-card>
-                                    <h4>实现图书分类功能</h4>
-                                    <p>Gong 提交于 2019/12/01 09:02</p>
-                                </el-card>
-                            </el-timeline-item>
-                            <el-timeline-item timestamp="2019/11/21" placement="top">
-                                <el-card>
-                                    <h4>项目框架构建</h4>
-                                    <p>Gong 提交于 2019/11/21 21:32</p>
-                                </el-card>
-                            </el-timeline-item>
+                            <template v-for="(item, index) in timelineArr">
+                                <el-timeline-item :timestamp="item.date" placement="top" :key="index">
+                                    <el-card>
+                                        <h4>{{ item.describe }}</h4>
+                                        <p>{{ item.submitDesc }}</p>
+                                    </el-card>
+                                </el-timeline-item>
+                            </template>
                         </el-timeline>
                     </div>
                 </el-card>
@@ -67,6 +57,37 @@ export default {
     mounted () {
         console.log(this.$store.state)
         // this.$store.commit('TOKEN', '')
+    },
+    data () {
+        return {
+            timelineArr: [
+                {
+                    date: '2019/12/08',
+                    describe: '图片上传功能完成',
+                    submitDesc: 'Gong 提交于 2019/12/08 17:20'
+                },
+                {
+                    date: '2019/12/01',
+                    describe: '图书分页功能完',
+                    submitDesc: 'Gong 提交于 2019/12/01 17:16'
+                },
+                {
+                    date: '2019/12/01',
+                    describe: '开始初步前后端联调，使前后端能连通，主要解决问题跨域',
+                    submitDesc: 'Gong 提交于 2019/12/01 12:00'
+                },
+                {
+                    date: '2019/12/01',
+                    describe: '实现图书分类功能',
+                    submitDesc: 'Gong 提交于 2019/12/01 09:02'
+                },
+                {
+                    date: '2019/11/21',
+                    describe: '项目框架构建',
+                    submitDesc: 'Gong 提交于 2019/11/21 21:32'
+                }
+            ]
+        }
     }
 }
 </script>

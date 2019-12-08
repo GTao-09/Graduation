@@ -24,7 +24,7 @@ const localDate = () => {
 
 /**
  * @route POST /users/register
- * @description 注册接口地址  http://127.0.0.1:8060/users/register
+ * @description 注册接口地址  http://127.0.0.1:5000/users/register
  * @access 接口不是公开的 需要token
  */
 router.post('/register', async ctx => {
@@ -70,7 +70,7 @@ router.post('/register', async ctx => {
 
 /**
  * @route POST /users/login
- * @description 登陆接口地址 http://127.0.0.1:8060/users/login
+ * @description 登陆接口地址 http://127.0.0.1:5000/users/login
  * @access 接口是公开的
  */
 router.post('/login', async ctx => {

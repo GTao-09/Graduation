@@ -21,7 +21,7 @@ const routes = require("./api/index");
 const check = require("./util/check");
 
 const db = "mongodb://localhost:27019/graduation";
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         // 最后加上
         // let data = {name: 'admin', password: enbcrypt('123456'), identify: 'admin'};
@@ -39,7 +39,7 @@ app.use(cors({
         if (ctx.url === '/test') {
             return "*"; // 允许来自所有域名请求
         }
-        return 'http://192.168.0.110:8080'; // 这样就能只允许 http://192.168.0.110:8080 这个域名的请求了
+        return 'http://192.168.0.102:8080'; // 这样就能只允许 http://192.168.0.112:8080 这个域名的请求了
     },
     exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
     maxAge: 5,
@@ -50,7 +50,7 @@ app.use(cors({
 app.use(check);
 app.use(routes.routes(), routes.allowedMethods())
 
-const port = process.env.PORT || 8060;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}, http://127.0.0.1:${port}`);
 });

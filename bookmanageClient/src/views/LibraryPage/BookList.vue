@@ -13,7 +13,8 @@
             </el-table-column>
             <el-table-column prop="auditing" label="操作" align="center">
                 <template slot-scope="scope">
-                    <el-button icon="el-icon-edit" type="primary" @click="editUser(scope.row)">编辑</el-button>
+                    <el-button icon="el-icon-edit" type="primary" size="mini" @click="editUser(scope.row)"></el-button>
+                    <el-button icon="el-icon-delete" type="danger" size="mini" @click="deleteBook(scope.row.ISBN)"></el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -62,6 +63,21 @@ export default {
     methods: {
         editUser (val) {
             this.$emit('BookEdit', val)
+        },
+        deleteBook (val) {
+            this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.$emit('BookDelete', val)
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除',
+                    duration: 1000
+                })
+            })
         }
     }
 }
