@@ -71,7 +71,7 @@ const ajax = options => {
         'Content-Type': 'application/json;charset=UTF-8'
     }
     if (urlDict[options.type].needLogin) { // 设置token
-        header.Authorization = `Bearer ${store.state.token}`
+        header.Authorization = `Bearer ${store.state.token.token}`
     }
     options.headers = header
     options.method = options.method || 'POST' // 默认为post请求

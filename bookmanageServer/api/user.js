@@ -40,9 +40,16 @@ router.post('/register', async ctx => {
         );
     } else { // 没重复
         const newUser = new User({
+            userName: ctx.request.body.userName,
             name: ctx.request.body.name,
             password: await enbcrypt(ctx.request.body.password),
-            identify: ctx.request.body.identify
+            identify: ctx.request.body.identify,
+            gender: ctx.request.body.gender,
+            age: ctx.request.body.age,
+            entryTime: ctx.request.body.entryTime,
+            birthday: ctx.request.body.birthday,
+            subordinateDepart: ctx.request.body.subordinateDepart,
+            tel: ctx.request.body.tel
         });
         // 存储到数据库
         await newUser.save()
@@ -95,7 +102,7 @@ router.post('/login', async ctx => {
                 const rule = {
                     id: user._id,
                     name: user.name,
-                    identity: user.identity,
+                    identify: user.identify,
                     time: localDate(), // 当前登录的时间
                     timeout: 2*60*60*1000 // 过期时间2小时
                 }
@@ -107,8 +114,11 @@ router.post('/login', async ctx => {
                     ctx.body = {
                         success: true,
                         sysErrDesc: '', // 错误信息
-                        data: token // 前端拼装了Bearer
-                        // data: 'Bearer ' + token // 数据
+                        data: {
+                            'token': token,
+                            'name': user.name,
+                            'identify': user.identify,
+                        }
                     }
                 );
             }
@@ -131,6 +141,87 @@ router.post('/login', async ctx => {
                 sysError: error
             };
         })
+});
+
+/**
+ * 用户信息查询接口
+ * @route POST /users/search
+ * @description 注册接口地址  http://127.0.0.1:5000/users/search
+ * @access 接口不是公开的 需要token
+ */
+router.post('/search', async ctx => {
+    const Username = ctx.request.body.name;
+    const type = ctx.request.body.type || 0;
+    let pageSize = ctx.request.body.pageSize // pageSize 每页显示多少条
+    let pageNum = parseInt(ctx.request.body.pageNum) // pageNum = 第几页
+    let total = await User.countDocuments() // 总数
+    if (!Username) {
+        await User.find({}).limit(pageSize).skip((pageNum - 1) * pageSize)
+            .then(user => {
+                return ( 
+                    ctx.state = 200,
+                    ctx.body = {
+                        success: true,
+                        sysErrDesc: "",
+                        data: user,
+                        total: total
+                    }
+                );
+            })
+            .catch(error => {
+                // console.log(error);
+                return (
+                    ctx.state = 500,
+                    ctx.body = {
+                        success: false,
+                        sysErrDesc: '未找到!', // 错误信息
+                        data: '', // 数据
+                        sysError: error
+                    }
+                );
+            })
+    } else {
+        // const reg = new RegExp(Username,'i');//不区分大小写
+        const searchName = type ? Username : {$regex: Username}
+        await User.find({name: searchName}).limit(pageSize).skip((pageNum - 1) * pageSize)
+        .then(user => {
+            ctx.state = 200;
+            ctx.body = {
+                success: true,
+                sysErrDesc: "",
+                data: user
+            };
+        })
+        .catch(error => {
+            // console.log(error);
+            ctx.state = 500;
+            ctx.body = {
+                success: false,
+                sysErrDesc: '未找到!', // 错误信息
+                data: '', // 数据
+                sysError: error
+            };
+        })
+        // await User.find({name:{$regex:Username}}).limit(pageSize).skip((pageNum - 1) * pageSize)
+        //     .then(user => {
+        //         ctx.state = 200;
+        //         ctx.body = {
+        //             success: true,
+        //             sysErrDesc: "",
+        //             data: user
+        //         };
+        //     })
+        //     .catch(error => {
+        //         // console.log(error);
+        //         ctx.state = 500;
+        //         ctx.body = {
+        //             success: false,
+        //             sysErrDesc: '未找到!', // 错误信息
+        //             data: '', // 数据
+        //             sysError: error
+        //         };
+        //     })
+    }
 });
 
 module.exports = router;

@@ -8,7 +8,7 @@ Vue.use(Vuex)
 let initData = {
     token: { // 用户请求认证，Authorization携带
         persistence: true,
-        default: ''
+        default: {}
     }
 }
 

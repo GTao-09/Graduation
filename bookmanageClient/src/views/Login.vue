@@ -46,6 +46,7 @@ export default {
                         method: 'post'
                     }).then(res => {
                         if (res.data.success) {
+                            console.log(res.data.data)
                             this.$store.commit('TOKEN', res.data.data)
                             this.$router.push({ path: '/' })
                         }

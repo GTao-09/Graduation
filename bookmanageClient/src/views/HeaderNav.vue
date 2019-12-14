@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         logout () {
-            this.$store.commit('TOKEN', '')
+            this.$store.commit('TOKEN', {})
             location.href = 'http://192.168.0.102:8080/'
         },
         handleSelect (key, val) {

@@ -31,7 +31,7 @@ export default new VueRouter({
                 {
                     path: '/admin',
                     name: 'Admin',
-                    redirect: '/userconfig',
+                    redirect: '/infopersonal',
                     component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/index.vue'),
                     children: [
                         {
@@ -43,6 +43,11 @@ export default new VueRouter({
                             path: '/registered',
                             name: 'Registered',
                             component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/Registered.vue')
+                        },
+                        {
+                            path: '/infopersonal',
+                            name: 'InfoPersonal',
+                            component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/InfoPersonal.vue')
                         }
                     ]
                 }

@@ -13,11 +13,10 @@ export default {
         HeaderNav
     },
     mounted () {
-        // 前端开发时先注释掉
-        if (this.$store.state.token) {
+        if (this.$store.state.token && Object.keys(this.$store.state.token).length) {
             this.flag = true
         } else {
-            if (JSON.parse(window.localStorage.getItem('__graduationStore__')) && JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token) {
+            if (JSON.parse(window.localStorage.getItem('__graduationStore__')) && Object.keys(JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token).length) {
                 this.flag = true
                 this.$store.commit('TOKEN', JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token)
             } else {

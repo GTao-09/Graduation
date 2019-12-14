@@ -57,8 +57,8 @@ router.post('/bookAdd', async ctx => {
 });
 
 /**
- * 图书查询，也可根据bookCategory(类别)来查询接口
- * @route POST api/books/search
+ * 图书查询根据bookCategory(类别)来查询接口
+ * @route POST /books/search
  * @description 注册接口地址  http://127.0.0.1:5000/books/search
  * @access 接口不是公开的 需要token
  */
@@ -93,7 +93,7 @@ router.post('/search', async ctx => {
                 );
             })
     } else {
-        await Book.find({bookCategory}).limit(pageSize).skip((pageNum - 1) * pageSize)
+        await Book.find({bookCategory: bookCategory}).limit(pageSize).skip((pageNum - 1) * pageSize)
             .then(book => {
                 ctx.state = 200;
                 ctx.body = {

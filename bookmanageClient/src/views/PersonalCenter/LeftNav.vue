@@ -2,7 +2,7 @@
     <div class="admin-left-nav">
         <el-aside class="sider">
             <!-- :default-active="$route.path"  -->
-            <el-menu class="menu" :router="true" default-active="/userconfig" @select="select"
+            <el-menu class="menu" :router="true" default-active="/infopersonal" @select="select"
                 background-color="#545c64"
                 text-color="#ffffff"
                 active-text-color="#ffd04b">
@@ -27,17 +27,36 @@
 <script>
 export default {
     name: 'AdminLeftNav', // 个人中心侧导航
+    mounted () {
+        if (this.$store.state.token && Object.keys(this.$store.state.token).length) {
+            this.identify = this.$store.state.token.identify
+            console.log(this.identify)
+            if (this.identify === '1') {
+                this.leftNavArr.push(
+                    {
+                        icon: 'el-icon-menu',
+                        name: '用户管理', // 只有管理员才展示
+                        children: [
+                            { path: '/userconfig', name: '用户配置' }, // 用户信息的修改
+                            { path: '/registered', name: '注册' }
+                        ]
+                    }
+                )
+            }
+        }
+    },
     data () {
         return {
+            identify: '0',
             leftNavArr: [
-                {
-                    icon: 'el-icon-menu',
-                    name: '用户管理', // 只有管理员才展示
-                    children: [
-                        { path: '/userconfig', name: '用户配置' }, // 用户信息的修改
-                        { path: '/registered', name: '注册' }
-                    ]
-                },
+                // {
+                //     icon: 'el-icon-menu',
+                //     name: '用户管理', // 只有管理员才展示
+                //     children: [
+                //         { path: '/userconfig', name: '用户配置' }, // 用户信息的修改
+                //         { path: '/registered', name: '注册' }
+                //     ]
+                // },
                 {
                     icon: 'el-icon-menu',
                     name: '信息管理',
@@ -107,4 +126,7 @@ export default {
 // .menu  /deep/ .is-active {
 //     background-color: #f2f6f9;
 // }
+.admin-left-nav /deep/ .el-aside {
+    overflow: hidden;
+}
 </style>

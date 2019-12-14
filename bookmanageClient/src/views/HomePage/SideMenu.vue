@@ -50,4 +50,7 @@ a {
     // left: -680px;
     top: 100px;
 }
+.side-menu /deep/ .el-aside {
+    overflow: hidden;
+}
 </style>

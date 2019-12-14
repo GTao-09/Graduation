@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+uploadImg/node_modules
 mongoData
 
 # local env files

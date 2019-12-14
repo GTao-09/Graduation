@@ -24,7 +24,7 @@ const db = "mongodb://localhost:27019/graduation";
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         // 最后加上
-        // let data = {name: 'admin', password: enbcrypt('123456'), identify: 'admin'};
+        // let data = {name: 'admin', password: enbcrypt('123456'), identify: '1'};
         // userSchema.create(data, (error, data) => {
         //     if (error) throw error;
         //     console.log(data)

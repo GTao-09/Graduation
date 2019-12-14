@@ -18,6 +18,10 @@ const urlDict = {
     bookDelete: { // 删除图书
         url: '/books/bookDelete',
         needLogin: true
+    },
+    userSearch: {
+        url: '/users/search',
+        needLogin: true
     }
 }
 export default urlDict

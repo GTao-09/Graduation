@@ -54,10 +54,6 @@ export default {
         DownCode,
         About
     },
-    mounted () {
-        console.log(this.$store.state)
-        // this.$store.commit('TOKEN', '')
-    },
     data () {
         return {
             timelineArr: [
