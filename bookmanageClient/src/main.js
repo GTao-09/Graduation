@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import NProgress from 'nprogress'
 import { Message } from 'element-ui'
+import VCharts from 'v-charts'
 import ajax from './util/ajax'
 
 import './plugins/element.js'
@@ -12,6 +13,8 @@ import './plugins/element.js'
 Vue.config.productionTip = false
 Vue.prototype.$message = Message
 Vue.prototype.$ajax = ajax
+
+Vue.use(VCharts)
 
 // 简单配置
 NProgress.configure({ showSpinner: false })

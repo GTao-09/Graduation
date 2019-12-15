@@ -51,7 +51,7 @@ export default {
             leftNavArr: [
                 // {
                 //     icon: 'el-icon-menu',
-                //     name: '用户管理', // 只有管理员才展示
+                //     name: '用户管理', // 只有管理员才展示  记得注释掉
                 //     children: [
                 //         { path: '/userconfig', name: '用户配置' }, // 用户信息的修改
                 //         { path: '/registered', name: '注册' }
@@ -62,7 +62,7 @@ export default {
                     name: '信息管理',
                     children: [
                         { path: '/infopersonal', name: '个人信息' },
-                        { path: '/xxx', name: '书库信息' } // 数据可视化
+                        { path: '/bookinfo', name: '书库信息' } // 数据可视化
                     ]
                 }
             ]
@@ -92,7 +92,8 @@ export default {
 //     color: #666;
 // }
 .sider {
-    width: 201px !important;
+    width: 200px !important;
+    // width: 201px !important;
     // background-color: #ffffff;
     .menu {
         height: 100%;

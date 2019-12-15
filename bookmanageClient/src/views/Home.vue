@@ -13,6 +13,7 @@ export default {
         HeaderNav
     },
     mounted () {
+        // 前端开发时的注释，记得放开注释
         if (this.$store.state.token && Object.keys(this.$store.state.token).length) {
             this.flag = true
         } else {

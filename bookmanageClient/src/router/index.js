@@ -48,6 +48,11 @@ export default new VueRouter({
                             path: '/infopersonal',
                             name: 'InfoPersonal',
                             component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/InfoPersonal.vue')
+                        },
+                        {
+                            path: '/bookinfo',
+                            name: 'bookinfo',
+                            component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/VCharts/index.vue')
                         }
                     ]
                 }
