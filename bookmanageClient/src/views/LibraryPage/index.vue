@@ -81,7 +81,8 @@
                         action="http://127.0.0.1:5009/upload"
                         :show-file-list="false"
                         :on-success="handleAvatarSuccess"
-                        :before-upload="beforeAvatarUpload">
+                        :before-upload="beforeAvatarUpload"
+                        :on-remove="handleRemove">
                         <img v-if="addBookForm.cover" :src="addBookForm.cover" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
@@ -93,6 +94,9 @@
                 <el-button v-else type="primary" @click="bookEditBtn">确 定</el-button>
             </div>
         </el-dialog>
+        <!-- <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog> -->
     </div>
 </template>
 
@@ -123,6 +127,8 @@ export default {
     },
     data () {
         return {
+            // dialogImageUrl: '',
+            // dialogVisible: false,
             total: null,
             bookArr: [],
             sideMenuValue: null,
@@ -314,6 +320,9 @@ export default {
             }
             return isLt2M
             // return isJPG && isLt2M
+        },
+        handleRemove (file, fileList) {
+            console.log(file, fileList)
         }
     }
 }

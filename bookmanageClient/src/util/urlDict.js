@@ -22,6 +22,26 @@ const urlDict = {
     userSearch: {
         url: '/users/search',
         needLogin: true
+    },
+    userDelete: {
+        url: '/users/userDelete',
+        needLogin: true
+    },
+    userRegister: {
+        url: '/users/register',
+        needLogin: true
+    },
+    borrowingsSearch: {
+        url: '/borrowings/search',
+        needLogin: true
+    },
+    borrowingAdd: {
+        url: '/borrowings/borrowingAdd',
+        needLogin: true
+    },
+    borrowDelete: {
+        url: '/borrowings/borrowDelete',
+        needLogin: true
     }
 }
 export default urlDict

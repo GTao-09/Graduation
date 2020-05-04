@@ -18,7 +18,7 @@ app.use(cors({
         if (ctx.url === '/test') {
             return "*"; // 允许来自所有域名请求
         }
-        return 'http://192.168.0.102:8080';
+        return 'http://192.168.0.106:8080';
     },
     exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
     maxAge: 5,

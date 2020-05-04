@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="main-center">
-                <div class="center-title">test</div>
+                <div class="center-title">每月引进与毁坏的书籍数目</div>
                 <!-- 柱状图 -->
                 <div class="histogram-style">
                     <ve-histogram :extend="histogramChartExtend" :data="histogramChartData" :settings="histogramChartSettings"></ve-histogram>
@@ -27,7 +27,7 @@
                 <div class="right-box">
                     <charts>
                         <div class="carousel-warp">
-                            <advertising></advertising>
+                            <!-- <advertising></advertising> -->
                         </div>
                     </charts>
                 </div>
@@ -41,16 +41,16 @@
 
 <script>
 import charts from './charts'
-import advertising from './advertising'
+// import advertising from './advertising'
 export default {
     name: 'testCharts', // v-charts测试
     components: {
-        charts,
-        advertising
+        charts
+        // advertising
     },
     data () {
         this.histogramChartSettings = {
-            metrics: ['访问用户', '下单用户'],
+            metrics: ['引进书籍数目', '毁坏书籍数目'],
             dimension: ['日期']
         }
         this.chartSettings = {
@@ -117,25 +117,31 @@ export default {
         }
         return {
             chartData: {
-                columns: ['日期', '访问用户'],
+                columns: ['类型', '所有用数目'],
                 rows: [
-                    { '日期': '1/1', '访问用户': 1393 },
-                    { '日期': '1/2', '访问用户': 3530 },
-                    { '日期': '1/3', '访问用户': 2923 },
-                    { '日期': '1/4', '访问用户': 1723 },
-                    { '日期': '1/5', '访问用户': 3792 },
-                    { '日期': '1/6', '访问用户': 4593 }
+                    { '类型': '文学', '所有用数目': 1 },
+                    { '类型': '流行', '所有用数目': 2 },
+                    { '类型': '文化', '所有用数目': 3 },
+                    { '类型': '生活', '所有用数目': 1 },
+                    { '类型': '经管', '所有用数目': 2 },
+                    { '类型': '科技', '所有用数目': 3 }
+                    // { '类型': '文学', '所有用数目': 1393 },
+                    // { '类型': '流行', '所有用数目': 3530 },
+                    // { '类型': '文化', '所有用数目': 2923 },
+                    // { '类型': '生活', '所有用数目': 1723 },
+                    // { '类型': '经管', '所有用数目': 3792 },
+                    // { '类型': '科技', '所有用数目': 4593 }
                 ]
             },
             histogramChartData: {
-                columns: ['日期', '访问用户', '下单用户', '下单率'],
+                columns: ['日期', '引进书籍数目', '毁坏书籍数目'],
                 rows: [
-                    { '日期': '1/1', '访问用户': 1393, '下单用户': 1093, '下单率': 0.32 },
-                    { '日期': '1/2', '访问用户': 3530, '下单用户': 3230, '下单率': 0.26 },
-                    { '日期': '1/3', '访问用户': 2923, '下单用户': 2623, '下单率': 0.76 },
-                    { '日期': '1/4', '访问用户': 1723, '下单用户': 1423, '下单率': 0.49 },
-                    { '日期': '1/5', '访问用户': 3792, '下单用户': 3492, '下单率': 0.323 },
-                    { '日期': '1/6', '访问用户': 4593, '下单用户': 4293, '下单率': 0.78 }
+                    { '日期': '1月', '引进书籍数目': 1393, '毁坏书籍数目': 1093 },
+                    { '日期': '2月', '引进书籍数目': 3530, '毁坏书籍数目': 3230 },
+                    { '日期': '3月', '引进书籍数目': 2923, '毁坏书籍数目': 2623 },
+                    { '日期': '4月', '引进书籍数目': 1723, '毁坏书籍数目': 1423 },
+                    { '日期': '5月', '引进书籍数目': 3792, '毁坏书籍数目': 3492 },
+                    { '日期': '6月', '引进书籍数目': 4593, '毁坏书籍数目': 4293 }
                 ]
             }
         }
@@ -220,7 +226,7 @@ export default {
     height: 110px;
     background-color: rgba(35, 72, 135, 0.4);
     margin-bottom: 15px;
-    font-size: 60px;
+    font-size: 35px;
     line-height: 110px;
     color: #fff;
 }

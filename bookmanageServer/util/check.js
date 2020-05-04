@@ -55,7 +55,7 @@ const check = async (ctx, next) => {
                 ctx.state = 5001,
                 ctx.body = {
                     success: false,
-                    sysErrDesc: '请重新登录', // 错误信息
+                    sysErrDesc: '请重新登录000000', // 错误信息
                     sysError: error // 数据
                 }
             )

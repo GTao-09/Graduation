@@ -55,6 +55,11 @@ export default new VueRouter({
                             component: () => import(/* webpackChunkName: "about" */ '../views/PersonalCenter/VCharts/index.vue')
                         }
                     ]
+                },
+                {
+                    path: '/borrowing',
+                    name: 'Borrowing',
+                    component: () => import(/* webpackChunkName: "about" */ '../views/BorrowingPage/index.vue')
                 }
             ]
         },

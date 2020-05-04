@@ -12,10 +12,10 @@
                 {{ infoPersonalForm.userName }}
             </el-form-item>
             <el-form-item v-if="infoPersonalForm.identify" label="身份:">
-                {{ infoPersonalForm.identify }}
+                {{ identifyOptions[infoPersonalForm.identify] }}
             </el-form-item>
             <el-form-item v-if="infoPersonalForm.gender" label="性别:">
-                {{ infoPersonalForm.gender }}
+                {{ genderOptions[infoPersonalForm.gender] }}
             </el-form-item>
             <el-form-item v-if="infoPersonalForm.age" label="年龄:">
                 {{ infoPersonalForm.age }}
@@ -37,6 +37,14 @@
 </template>
 
 <script>
+const genderOptions = {
+    0: '女',
+    1: '男'
+}
+const identifyOptions = {
+    0: '管理员',
+    1: '超级管理员'
+}
 export default {
     name: 'InfoPersonal', // 个人信息
     mounted () {
@@ -46,6 +54,8 @@ export default {
     },
     data () {
         return {
+            identifyOptions,
+            genderOptions,
             infoPersonalForm: {},
             contentLoading: false
         }

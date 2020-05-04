@@ -27,14 +27,15 @@ export default {
                 { name: '/index', navItem: '首页' }, // 稍作修改
                 { name: '/log', navItem: '日志' }, // 同原
                 { name: '/library', navItem: '图书馆' }, // 同原
-                { name: '/admin', navItem: '管理' } // 1. 个人信息展示 2. 最近更新内容的添加(首页展示)
+                { name: '/admin', navItem: '管理' }, // 1. 个人信息展示 2. 最近更新内容的添加(首页展示)
+                { name: '/borrowing', navItem: '借阅归还' }
             ]
         }
     },
     methods: {
         logout () {
             this.$store.commit('TOKEN', {})
-            location.href = 'http://192.168.1.7:8080/'
+            location.href = 'http://192.168.0.106:8080/'
         },
         handleSelect (key, val) {
             console.log(key, val)

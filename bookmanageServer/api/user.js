@@ -90,7 +90,7 @@ router.post('/login', async ctx => {
                 ctx.state = 404,
                 ctx.body = {
                     success: false,
-                    sysErrDesc: '用户名不存在', // 错误信息
+                    sysErrDesc: '请查看用户名或密码是否正确', // 错误信息
                     data: '' // 数据
                 }
             );
@@ -127,7 +127,7 @@ router.post('/login', async ctx => {
             ctx.state = 500,
             ctx.body = {
                 success: false,
-                sysErrDesc: '账号或密码错误', // 错误信息
+                sysErrDesc: '请查看用户名或密码是否正确', // 错误信息
                 data: '', // 数据
                 sysError: error
             };
@@ -136,7 +136,7 @@ router.post('/login', async ctx => {
             ctx.state = 500,
             ctx.body = {
                 success: false,
-                sysErrDesc: '账号或密码错误', // 错误信息
+                sysErrDesc: '请查看用户名或密码是否正确', // 错误信息
                 data: '', // 数据
                 sysError: error
             };
@@ -222,6 +222,35 @@ router.post('/search', async ctx => {
         //         };
         //     })
     }
+});
+
+/**
+ * 用户删除接口
+ * @route POST /users/userDelete
+ * @description 注册接口地址  http://127.0.0.1:5000/users/userDelete
+ * @access 接口不是公开的 需要token
+ */
+router.post('/userDelete', async ctx => {
+    await User.deleteOne({name: ctx.request.body.name})
+        .then(user => {
+            ctx.state = 200;
+            ctx.body = {
+                success: true,
+                sysErrDesc: '', // 错误信息
+                data: '' // 数据
+            };
+            // console.log(user)
+        })
+        .catch(error => {
+            // console.log(error);
+            ctx.state = 500;
+            ctx.body = {
+                success: false,
+                sysErrDesc: '删除失败!', // 错误信息
+                data: '', // 数据
+                sysError: error
+            };
+        })
 });
 
 module.exports = router;

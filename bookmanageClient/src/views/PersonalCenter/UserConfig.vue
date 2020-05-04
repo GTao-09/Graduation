@@ -14,8 +14,18 @@
             <el-table-column prop="_id" label="id" align="center"></el-table-column>
             <el-table-column prop="name" label="用户名" align="center"></el-table-column>
             <el-table-column prop="userName" label="真实姓名" align="center"></el-table-column>
-            <el-table-column prop="identify" label="身份" align="center"></el-table-column>
-            <el-table-column prop="gender" label="性别" align="center"></el-table-column>
+            <el-table-column prop="identify" label="身份" align="center">
+                <template slot-scope="scope">
+                    <!-- 0 普通用户 1 管理员 -->
+                    {{identifyOptions[scope.row.identify]}}
+                </template>
+            </el-table-column>
+            <el-table-column prop="gender" label="性别" align="center">
+                <template slot-scope="scope">
+                    <!-- 0 女 1 男 -->
+                    {{genderOptions[scope.row.gender]}}
+                </template>
+            </el-table-column>
             <el-table-column prop="age" label="年龄" align="center"></el-table-column>
             <el-table-column prop="entryTime" label="入职时间" align="center"></el-table-column>
             <el-table-column prop="birthday" label="出生年月" align="center"></el-table-column>
@@ -23,7 +33,8 @@
             <el-table-column prop="subordinateDepart" label="所属部门" align="center"></el-table-column>
             <el-table-column prop="auditing" label="操作" align="center">
                 <template slot-scope="scope">
-                    <el-button icon="el-icon-edit" type="primary" @click="editUser(scope.row)">编辑</el-button>
+                    <el-button type="text" @click="editUser(scope.row)">编辑</el-button>
+                    <el-button type="text" @click="deleteUser(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -35,6 +46,14 @@
 
 <script>
 import Pagination from '../../components/Pagination'
+const identifyOptions = {
+    0: '管理员',
+    1: '超级管理员'
+}
+const genderOptions = {
+    0: '女',
+    1: '男'
+}
 export default {
     name: 'UserConfig', // 用户配置
     components: {
@@ -45,6 +64,8 @@ export default {
     },
     data () {
         return {
+            genderOptions,
+            identifyOptions,
             inputName: '',
             total: null,
             contentLoading: false,
@@ -56,6 +77,36 @@ export default {
         }
     },
     methods: {
+        deleteUser (val) {
+            this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.$ajax({
+                    type: 'userDelete',
+                    data: {
+                        name: val.name
+                    },
+                    methods: 'post'
+                }).then(res => {
+                    if (res.data.success) {
+                        this.$message({
+                            message: '删除成功！',
+                            type: 'success',
+                            duration: 1000
+                        })
+                        this.userSearch()
+                    }
+                })
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除',
+                    duration: 1000
+                })
+            })
+        },
         editUser (val) {
             console.log(val)
         },
