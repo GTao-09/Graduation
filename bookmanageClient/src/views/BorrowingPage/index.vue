@@ -130,6 +130,14 @@ export default {
         },
         findName () {
             console.log(this.inputName)
+            if (this.inputName) {
+                let newTabel = this.tableData.filter(mes => {
+                    return mes.name.match(this.inputName)
+                })
+                this.tableData = newTabel
+            } else {
+                this.borrowingsSearch()
+            }
         },
         sureReturnDate (val) {
             if (val) {
@@ -211,7 +219,15 @@ export default {
                         this.$confirm(`书库暂没有ISBN为${val}的图书`, '提示', {
                             confirmButtonText: '确定',
                             type: 'warning'
+                        }).then(() => {
+                            this.form.ISBN = ''
+                            this.form.bookName = ''
+                            this.form.bookAuthor = ''
+                            this.form.bookPress = ''
+                            this.form.yearOfPublication = ''
+                            this.form.bookPricing = ''
                         })
+                        this.form.ISBN = ''
                         this.form.bookName = ''
                         this.form.bookAuthor = ''
                         this.form.bookPress = ''

@@ -7,7 +7,7 @@
                 <a href="#technology-adoption">
                     <el-menu-item index="1">
                         <i class="el-icon-menu"></i>
-                        <span slot="title">技术采用</span>
+                        <span slot="title">最新动态</span>
                     </el-menu-item>
                 </a>
                 <a href="#recent-updates">

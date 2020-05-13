@@ -21,7 +21,7 @@ export default {
                 this.flag = true
                 this.$store.commit('TOKEN', JSON.parse(window.localStorage.getItem('__graduationStore__')).graduationStore.token)
             } else {
-                location.href = 'http://192.168.0.106:8080/login'
+                location.href = 'http://192.168.1.7:8080/login'
             }
         }
     },
